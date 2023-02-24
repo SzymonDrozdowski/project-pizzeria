@@ -60,21 +60,51 @@
       thisProduct.data = data;
 
       thisProduct.renderInMenu();
-
-      console.log("new product", thisProduct);
+      thisProduct.initAccordion();
     }
 
+    // RENDER MENU
     renderInMenu(){
       const thisProduct = this;
 
       /* generate HTML based on template */
       const generatedHTML = templates.menuProduct(thisProduct.data);
+
       /* create element using utils.createElementFromHTML */
       thisProduct.element = utils.createDOMFromHTML(generatedHTML);
+
       /* find menu container */
-      const menuContainer = document.querySelector(select.containerOf.menu)
+      const menuContainer = document.querySelector(select.containerOf.menu);
+
       /* add element to menu */
       menuContainer.appendChild(thisProduct.element);
+    }
+
+    // ACCORDION
+    initAccordion(){
+      const thisProduct = this;
+
+      /* find the clickable trigger (the element that should react to clicking) */
+      const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+
+      /* START: add event listener to clickable trigger on event click */
+      clickableTrigger.addEventListener('click', function (event) {
+
+        /* prevent default action for event */
+        event.preventDefault();
+
+        /* find active product (product that has active class) */
+        const activeProduct = document.querySelector(select.all.menuProductsActive);
+
+        /*if there is active product and its not thisProduct.element, remove class active */
+        if (activeProduct != null && activeProduct != thisProduct.element ){
+          activeProduct.classList.remove('active');
+        }
+
+        /*toggle active class */
+        thisProduct.element.classList.toggle('active');
+
+      });
     }
   }
   const app = {
