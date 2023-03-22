@@ -57,7 +57,6 @@ const app = {
   initMenu: function(){
     const thisApp = this;
 
-    console.log('thisApp.data:',thisApp.data);
     for(let productData in thisApp.data.products){
       new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
     }
@@ -73,15 +72,12 @@ const app = {
         return rawResponse.json();
       })
       .then(function(parsedResponse){
-        console.log('parsedResponse', parsedResponse);
         /* save parsedResponse as thisApp.data.products */
         thisApp.data.products = parsedResponse;
         
         thisApp.initMenu();
         /* execute this method */
       });
-
-    console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
 
   initCart: function(){
