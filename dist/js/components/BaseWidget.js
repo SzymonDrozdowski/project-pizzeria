@@ -1,61 +1,60 @@
 class BaseWidget{
-    constructor(wrapperElement, initialValue){
-        const thisWidget = this;
+  constructor(wrapperElement, initialValue){
+    const thisWidget = this;
 
-        thisWidget.dom = {};
-        thisWidget.dom.wrapper = wrapperElement;
+    thisWidget.dom = {};
+    thisWidget.dom.wrapper = wrapperElement;
 
-        thisWidget.correctValue = initialValue;
+    thisWidget.correctValue = initialValue;
+  }
+
+  get value(){
+    const thisWidget = this;
+
+    return thisWidget.correctValue;
+  }
+
+  set value(value){
+    const thisWidget = this;
+    
+    const newValue = thisWidget.parseValue(value);
+
+    //validation
+    if(newValue != thisWidget.correctValue && thisWidget.isValid(newValue)) {
+      thisWidget.correctValue = newValue;
+      thisWidget.announce();
     }
-
-    get value(){
-        const thisWidget = this;
-
-        return thisWidget.correctValue
-    }
-
-    set value(value){
-        const thisWidget = this;
     
-        const newValue = thisWidget.parseValue(value);
-    
-        
-        //validation
-        if(newValue != thisWidget.correctValue && thisWidget.isValid(newValue)) {
-          thisWidget.correctValue = newValue;
-          thisWidget.announce();
-        }
-    
-        thisWidget.renderValue();
-      }
+    thisWidget.renderValue();
+  }
 
-      setValue(value){
-        const thisWidget = this;
+  setValue(value){
+    const thisWidget = this;
 
-        thisWidget.value = value;
-      }
+    thisWidget.value = value;
+  }
 
-      parseValue(value){
-        return parseInt(value)
-      }
+  parseValue(value){
+    return parseInt(value);
+  }
     
-      isValid(value){
-        return !isNaN(value)
-      }
+  isValid(value){
+    return !isNaN(value);
+  }
 
-      renderValue(){
-        const thisWidget = this;
+  renderValue(){
+    const thisWidget = this;
     
-        thisWidget.dom.wrapper.innerHTML = thisWidget.value;
-      }
+    thisWidget.dom.wrapper.innerHTML = thisWidget.value;
+  }
 
-      announce(){
-        const thisWidget = this;
+  announce(){
+    const thisWidget = this;
     
-        const event = new CustomEvent('updated',{
-          bubbles: true
-        });
-        thisWidget.dom.wrapper.dispatchEvent(event);
-      }
+    const event = new CustomEvent('updated',{
+      bubbles: true
+    });
+    thisWidget.dom.wrapper.dispatchEvent(event);
+  }
 }
 export default BaseWidget;
