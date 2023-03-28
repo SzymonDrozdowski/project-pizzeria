@@ -171,7 +171,9 @@
         background: $color-dark;
         opacity: 0.4;
       }
-
+    }
+    &.selected{
+      border: 5px solid black
     }
   }
 

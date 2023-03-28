@@ -43,6 +43,7 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    allTables: '.floor-plan',
     bookingButton: 'button[type="submit"]',
     phoneNumber: 'input[name="phone"]',
     email: 'input[name="address"]',
