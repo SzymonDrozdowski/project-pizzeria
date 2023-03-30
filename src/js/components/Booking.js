@@ -203,19 +203,31 @@ class Booking{
     const thisBooking = this;
 
     const clickedTable = event.target;
+
+    // we try to get table id from clicked element
+    // if it is null, we know it's not table element
+    // it can be different element as initTables runs on every element click in tables container
     const tableId = clickedTable.getAttribute('data-table');
 
     if(tableId){
       if(clickedTable.classList.contains(classNames.booking.tableBooked)){
         alert('Table already booked !');
       }else{
+
+        thisBooking.tableSelected = null;
+        
         for(let table of thisBooking.dom.tables){
           if(table.classList.contains(classNames.booking.tableSelected) && table !== clickedTable){
             table.classList.remove(classNames.booking.tableSelected);
           }
         }
-        thisBooking.tableSelected = tableId;
-        clickedTable.classList.add(classNames.booking.tableSelected);
+
+        if (clickedTable.classList.contains(classNames.booking.tableSelected)) {
+          clickedTable.classList.remove(classNames.booking.tableSelected);
+        } else {
+          clickedTable.classList.add(classNames.booking.tableSelected);
+          thisBooking.tableSelected = tableId;
+        }
       }
     }
   }

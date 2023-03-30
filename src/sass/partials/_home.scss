@@ -1,0 +1,217 @@
+.home-wrapper {
+    margin: ($base-size * 3.5) auto;
+    padding: ($base-size * 6) ($base-size * 4);
+    background: $color-light;
+    border-bottom: 1px solid lighten($color-dark, 70%);
+    border-radius: $radius;
+}
+
+h3 {
+    font-family: $font-header;
+    font-weight: $font-semibold;
+    font-size: 25px;
+}
+
+h4 {
+    text-transform: uppercase;
+}
+
+.row-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: ($base-size / 2);
+}
+
+.box {
+    width: 300px;
+    height: 120px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius;
+    position: relative;
+}
+
+.box a {
+    text-decoration: none;
+    color: $color-light;
+}
+
+.box img {
+    width: 300px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: $radius;
+}
+
+.box p {
+    opacity: 0;
+    margin-bottom: 0;
+}
+
+.box h3 {
+    margin: 36px 0 0 0;
+}
+
+.box:hover h3 {
+    transform: translateY(-20%);
+    transition: $transition;
+    margin: 0 0 10px 0;
+}
+
+.box:hover p {
+    transform: translateY(-20%);
+    transition: $transition;
+    opacity: 100%;
+    margin: 0;
+}
+
+.order-book {
+    position: absolute;
+    display: inline-block;
+    color: $color-light;
+}
+
+.bottom-box {
+    width: 606px;
+    height: 120px;
+    border-radius: $radius;
+    background-color: $color-main;
+    color: $color-light;
+    text-align: center;
+    flex: 100%;
+    margin: ($base-size / 2) 0;
+    padding: ($base-size * 2) 0;
+}
+
+.bottom-box h3 {
+    margin: auto;
+}
+
+.open-time {
+    margin: 0;
+    font-weight: $font-semibold;
+}
+
+/*Carusel*/
+
+.main-carousel {
+    height: 300px;
+    margin: 80px 0;
+    padding: 20px 0 0 0;
+}
+
+.main-carousel img {
+    object-fit: cover;
+    width: 250px;
+    height: 190px;
+    border-radius: $radius;
+}
+
+.opinion {
+    display: inline-block;
+}
+
+.comment {
+    width: 351.2px;
+    max-width: 60%;
+    height: 170px;
+    padding: 0 0 0 40px;
+    margin: auto;
+
+}
+
+.client {
+    font-style: italic;
+    font-weight: bold;
+}
+
+/*Gallery*/
+
+.gallery {
+    flex-direction: column;
+}
+
+.gallery .row {
+    display: flex;
+    width: 100%;
+}
+
+.gallery-image {
+    position: relative;
+    transition: transform 2s;
+    width: 33.33333%;
+    height: 200px;
+    margin: 5px;
+    border-radius: $radius;
+    background-position: center center;
+    background-size: cover;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+
+.gallery-image:hover::before {
+    position: absolute;
+    content: "";
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    border-radius: $radius;
+}
+
+.gallery-image i {
+    visibility: hidden;
+    margin: 3px;
+    transform: scale(0.2);
+    transition: 0.5s;
+}
+
+.gallery-image:hover i {
+    visibility: visible;
+    color: $color-main;
+    transform: scale(1);
+}
+
+.pizza-1 {
+    background-image: url(../images/home/pizza-4.jpg);
+}
+
+.pizza-2 {
+    background-image: url(../images/home/pizza-5.jpg);
+}
+
+.pizza-3 {
+    background-image: url(../images/home/pizza-6.jpg);
+}
+
+.pizza-4 {
+    background-image: url(../images/home/pizza-7.jpg);
+}
+
+.pizza-5 {
+    background-image: url(../images/home/pizza-8.jpg);
+}
+
+.pizza-6 {
+    background-image: url(../images/home/pizza-9.jpg);
+}
+
+/*Link*/
+
+.link a {
+    color: $color-main;
+    font-style: $font-normal;
+    margin: 10px 0 0 0;
+    display: flex;
+    font-weight: bold;
+}
